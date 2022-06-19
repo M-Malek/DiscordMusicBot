@@ -5,13 +5,16 @@ from pytube import YouTube
 from discord.ext import commands, tasks
 import discord.utils
 
+import json
+from dotenv import load_dotenv
+
 client = commands.Bot(command_prefix="!")
 
 # GLOBALS:
 global current_delete_loop_time, current_play_loop_time, help_language
 current_delete_loop_time = 10
 current_play_loop_time = 1
-help_language = "PL"
+help_language = "EN"
 
 
 class Song:
@@ -125,15 +128,11 @@ class MusicBot(commands.Cog, SongsManager):
             await self.play_music(message)
         elif message.content.startswith('!info'):
             """Currently not working, work in progress..."""
-            # message_channel = ""
-            # await message_channel.send(('Muzyczny bot vol. 1. Komendy: \n'
-            #                             '!p <link> - odtwarza podaną piosenkę (dostępny jest jedynie YT) \n'
-            #                             '!skip - przeskakuje do kolejnej piosenki \n'
-            #                             '!stop - wyłącza odtwarzanie muzyki \n'
-            #                             '!resume - wznawia odtwarzanie muzyki'
-            #                             '!reset - wyłącza odtwarzanie muzyki i czyści listę piosenek \n'
-            #                             '!disconnect - bot opuszcza kanał'))
-            pass
+            with open('help_languages.json') as file:
+                help_json = json.load(file)
+                help_text = help_json[help_language]["help_text"]
+            info_message_channel = message.channel
+            await info_message_channel.send(help_text)
         elif message.content.startswith('!next'):
             self.bot.voice_clients[0].stop()
             self.music_manager.songs_shuffler()
@@ -209,6 +208,9 @@ class MusicBot(commands.Cog, SongsManager):
         self.music_manager.songs.append(song)
         self.music_manager.songs_shuffler()
 
+
+load_dotenv('env_variables.env')
+token = os.environ['TOKEN']
 
 client.add_cog(MusicBot(client))
 

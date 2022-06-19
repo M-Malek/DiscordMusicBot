@@ -1,7 +1,4 @@
-!!!Warining!!!
-
-This project was created to exercise negativity in programming.
-YouTube officially does not support this bot types
+This project was created only to exercise negativity in programming.
 
 Discord Music Bot
 (based on song's url searching in YouTube)
@@ -17,8 +14,10 @@ Used technologies:
 - discord.py: 1.7.3
 - pytube: 12.1.0
 
-Description:
-Simple discord music bot. Features:
-- find and add song to queue
-- stop/resume song
+Additional packages:
+- PyNaCl: 1.5.0
 
+Setup:
+- download project
+- set your token: create file "env_variables.env". Inside this file write: TOKEN=YOUR_BOT_TOKEN and save this file
+- launch script

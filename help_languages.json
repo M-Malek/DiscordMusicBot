@@ -1,0 +1,8 @@
+{
+  "PL": {
+    "help_text": "Muzyczny bot vol. 1. Komendy: \n !p <link> - odtwarza podaną piosenkę (dostępny jest jedynie YT) \n, !skip - przeskakuje do kolejnej piosenki \n!stop - wyłącza odtwarzanie muzyki \n!resume - wznawia odtwarzanie muzyki!reset - wyłącza odtwarzanie muzyki i czyści listę piosenek \n!disconnect - bot opuszcza kanał"
+  },
+  "EN": {
+    "help_text": "Music Bot vol. 1 Commands: \n !p <link> - play song (only from yt links) \n !skip - skip song (play next song in a queue \n !stop - stop playing a music \n!resume - resume playing music \n !reset - bott reset (clear song list and delete downloaded songs) \n !disconnect - bot leaving a voice channel (all downloaded songs will be deleted)"
+  }
+}
